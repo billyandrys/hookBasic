@@ -3,13 +3,18 @@ import './App.css';
 import { useState } from 'react' 
 
 function App() {
-   const [ something, setSomething] = useState()
-   console.log(something)
+    const [count, setCount ] = useState(0)
+    const [ showText, setShowText ] = useState(true)
   return (
     <div>
-    <input onChange={(e)=>setSomething(e.target.value)} text='text' placeholder='enter something' value={something}/>
-    </div>
-    
+       <h1>{ count }</h1>
+       <button onClick={()=>{
+         setCount( count + 1 )
+         setShowText( !showText )
+       }}> Clic here </button>
+        {showText && <p> This is text </p>}
+    </div> 
+   
   )  
 }
 
