@@ -3,16 +3,15 @@ import './App.css';
 import { useState } from 'react' 
 
 function App() {
-    const [ count, setCount ] = useState(0)
-  let increment = ()=> {
-      
-    setCount(count + 1 ) 
-  }
+   const [ something, setSomething] = useState()
+   console.log(something)
   return (
-    <div>{count}
-    <button onClick={increment}> increment </button>
+    <div>
+    <input onChange={(e)=>setSomething(e.target.value)} text='text' placeholder='enter something' value={something}/>
     </div>
-  );
+    
+  )  
 }
+
 
 export default App;
