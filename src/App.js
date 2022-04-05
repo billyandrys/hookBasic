@@ -1,18 +1,14 @@
-import Button from './Button'
 
-import { useRef } from 'react'
 
+import { useState } from 'react'
+import User from './User'
+import Loggin from './Login'
 function App() {
-   const buttonRef = useRef(null)
+
+  const [user, setUser ] = useState('')
       return (
       <>
-        <button  onClick={()=>{  
-          buttonRef.current.alterToggle()
-        }}
-        >
-        Parent form
-         </button>
-        <Button ref={buttonRef} />
+        <Loggin setUser={ setUser } /> <User user = { user } />
       </>
 
     )
