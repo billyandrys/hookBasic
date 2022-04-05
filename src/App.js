@@ -1,23 +1,18 @@
+import Button from './Button'
 
-import { useLayoutEffect, useEffect , useRef} from 'react'
-
-
+import { useRef } from 'react'
 
 function App() {
-  const inputRef = useRef(null)
-  useEffect(()=>{
-    inputRef.current.value = 'Hello'
-  },[])
-   
-
-  useLayoutEffect(()=>{
-     console.log(inputRef.current.value)
-  }, []) 
-  
-  
-    return (
+   const buttonRef = useRef(null)
+      return (
       <>
-      <input ref={inputRef} value='Pedro' style={{width:400, height:200}} />
+        <button  onClick={()=>{  
+          buttonRef.current.alterToggle()
+        }}
+        >
+        Parent form
+         </button>
+        <Button ref={buttonRef} />
       </>
 
     )
