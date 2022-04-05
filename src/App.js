@@ -1,23 +1,20 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+
+import { useRef } from 'react'
 
 
 function App() {
 
-  const [data, setData ] = useState('')
-  const [ count, setCount ] = useState(0)
-  useEffect(()=>{
-      axios.get('https://jsonplaceholder.typicode.com/comments')
-        .then(response=>{
-          setData(response.data[count].email)
-          console.log("API WAS CALLED")
-        }, [count])}
-  )  
+  const inputRef = useRef(null)
+  const onClick = ()=>{
+    
+    inputRef.current.focus()
+  }
+    
    
     return (
       <>
-      <h1>{ data }</h1>
-      <button onClick={()=>setCount(count + 1 )}>{count}</button>
+      <input type='text' placeholder='Ex...' ref={inputRef} />
+      <button onClick={onClick}>References</button>
       </>
 
     )
