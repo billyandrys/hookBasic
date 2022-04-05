@@ -1,20 +1,21 @@
 
-import { useRef } from 'react'
+import { useLayoutEffect, useEffect } from 'react'
 
 
 function App() {
-
-  const inputRef = useRef(null)
-  const onClick = ()=>{
-    
-    inputRef.current.focus()
-  }
-    
+  useEffect(()=>{
+    console.log('useEffect')
+  },[])
    
+
+  useLayoutEffect(()=>{
+      console.log('UseLayoutEffect')
+  }, []) 
+  
+  
     return (
       <>
-      <input type='text' placeholder='Ex...' ref={inputRef} />
-      <button onClick={onClick}>References</button>
+      
       </>
 
     )
