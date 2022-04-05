@@ -1,17 +1,19 @@
 
 
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import User from './User'
 import Loggin from './Login'
+export const AppContext = createContext(null)
 function App() {
-
-  const [user, setUser ] = useState('')
-      return (
-      <>
-        <Loggin setUser={ setUser } /> <User user = { user } />
-      </>
-
-    )
+const [userName, setUserName ] = useState('')
+  return (
+    <>
+      <AppContext.Provider value={{ userName, setUserName }}>
+        <Loggin/> <User/>
+      </AppContext.Provider>
+    </>
+  )
+    
 }
 
 

@@ -1,9 +1,10 @@
-import React from 'react'
-
-const User = ( {user} )=>{
+import React, { useContext } from 'react'
+import { AppContext } from './App'
+const User = ()=>{
+    const { userName  } = useContext(AppContext)
    return(
        <>
-            <span> user :  {user}</span>
+            <span> user :  {userName}</span>
        </>
    ) 
 }
