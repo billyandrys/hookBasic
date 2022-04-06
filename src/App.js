@@ -1,20 +1,40 @@
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 
 
-import { useState, createContext } from 'react'
-import User from './User'
-import Loggin from './Login'
-export const AppContext = createContext(null)
-function App() {
-const [userName, setUserName ] = useState('')
+export default function App() {
+const [data, setData ] = useState(null)
+
+useEffect(()=>{
+      axios.get('https://jsonplaceholder.typicode.com/comments')
+        .then((response)=>{
+            setData(response.data)
+      })
+}, [])
+
+const findLongestName = ( comments )=>{
+  if(!comments) return null
+  let longestName = ''
+  for( let i = 0; i < comments.length; i++){
+    let currentName = comments[i].name
+    if(currentName.length > longestName.length){
+      longestName = currentName
+      console.log(longestName)
+    }
+  }
+
+  console.log('this was computed')
+  return longestName 
+}
+
   return (
     <>
-      <AppContext.Provider value={{ userName, setUserName }}>
-        <Loggin/> <User/>
-      </AppContext.Provider>
+      <div>{findLongestName(data)}</div>
+      
     </>
   )
     
 }
 
 
-export default App;
+
